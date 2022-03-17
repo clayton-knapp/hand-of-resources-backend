@@ -45,6 +45,17 @@ describe('hand-of-resources-backend routes', () => {
 
   });
 
+  it('gets a car by id', async() => {
+    const expected = { id: expect.any(String), make: 'Nissan', model: 'D21', year: 1997 };
+
+    const res = await request(app)
+      .get('/api/v1/cars/2');
+
+    expect(res.body).toEqual(expected);
+
+
+  });
+
 });
 
 
