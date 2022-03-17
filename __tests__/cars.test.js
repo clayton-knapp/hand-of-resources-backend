@@ -31,7 +31,22 @@ describe('hand-of-resources-backend routes', () => {
 
   });
 
+  it('gets a list of all cars', async() => {
+    const expected = [
+      { id: expect.any(String), make: 'Ford', model: 'F-150', year: 2006 },
+      { id: expect.any(String), make: 'Nissan', model: 'D21', year: 1997 },
+      { id: expect.any(String), make: 'Subaru', model: 'Legacy', year: 1990 }
+    ];
+
+    const res = await request(app)
+      .get('/api/v1/cars');
+
+    expect(res.body).toEqual(expected);
+
+  });
+
 });
+
 
 // it('gets the list of guitars', async() => {
 //   const expected = await Guitar.getAll();
