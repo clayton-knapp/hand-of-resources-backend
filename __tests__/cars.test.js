@@ -56,6 +56,27 @@ describe('hand-of-resources-backend routes', () => {
 
   });
 
+  it('deletes a car by id', async() => {
+    const expected = { id: expect.any(String), make: 'Subaru', model: 'Legacy', year: 1990 };
+
+    const res = await request(app)
+      .delete('/api/v1/cars/3');
+
+    expect(res.body).toEqual(expected);
+
+  });
+
+  it('updates a car by id', async() => {
+    const expected = { id: expect.any(String), make: 'Subaru', model: 'Outback', year: 2005 };
+
+    const res = await request(app)
+      .patch('/api/v1/cars/3')
+      .send({ model: 'Outback', year: 2005 });
+
+    expect(res.body).toEqual(expected);
+
+  });
+
 });
 
 
