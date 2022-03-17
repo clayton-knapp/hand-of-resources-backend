@@ -41,6 +41,22 @@ describe('hand-of-resources-backend routes', () => {
 
     expect(res.body).toEqual(expected);
     
+  });
+
+  
+
+  it('gets subscriber by id', async() => {
+    const expected = { 
+      id: expect.any(String), 
+      email: 'clay@clay.com', 
+      subscribed: true 
+    };
+
+    const res = await request(app)
+      .get('/api/v1/subscribers/1');
+
+    expect(res.body).toEqual(expected);
+
 
   });
 
