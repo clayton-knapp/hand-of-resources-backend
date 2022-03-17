@@ -28,6 +28,19 @@ describe('hand-of-resources-backend routes', () => {
       email: 'jason@jason.com', 
       subscribed: true,
     });
+  });
+
+  it('gets list of subscribers', async() => {
+    const expected = [
+      { id: expect.any(String), email: 'clay@clay.com', subscribed: true },
+      { id: expect.any(String), email: 'sterling@sterling.com', subscribed: false }
+    ];
+
+    const res = await request(app)
+      .get('/api/v1/subscribers');
+
+    expect(res.body).toEqual(expected);
+    
 
   });
 
