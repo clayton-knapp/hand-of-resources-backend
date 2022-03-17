@@ -34,3 +34,18 @@ VALUES
   ('Ford', 'F-150', 2006),
   ('Nissan', 'D21', 1997),
   ('Subaru', 'Legacy', 1990);
+
+
+DROP TABLE IF EXISTS subscribers;
+
+CREATE TABLE subscribers (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  email TEXT NOT NULL,
+  subscribed BOOLEAN NOT NULL
+);
+
+INSERT INTO
+  subscribers (email, subscribed)
+VALUES
+  ('clay@clay.com', true),
+  ('sterling@sterling.com', false);
