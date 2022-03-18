@@ -19,20 +19,72 @@ describe('hand-of-resources-backend routes', () => {
     const expected = {
       id: expect.any(String),
       personName: 'Alex',
-      birthDate: '1987-11-27'
+      birthDate: '11/27/1987'
     };
 
     const res = await request(app)
       .post('/api/v1/birthdates')
       .send({ 
         personName: 'Alex',
-        birthDate: '1987-11-27' 
+        birthDate: '11/27/1987' 
       });
 
     expect(res.body).toEqual(expected);
   });
 
+
+  it('gets a list of all birthday entries', async() => {
+    const expected = [
+      {
+        id: expect.any(String),
+        personName: 'Clayton',
+        birthDate: '4/20/1969'
+      },
+      {
+        id: expect.any(String),
+        personName: 'Bob',
+        birthDate: '1/1/2000'
+      }
+    ];
+
+    const res = await request(app)
+      .get('/api/v1/birthdates');
+
+    expect(res.body).toEqual(expected);
+
+  });
+
+  it('gets birthdate entry by id', async() => {
+    const expected = {
+      id: expect.any(String),
+      personName: 'Bob',
+      birthDate: '1/1/2000'
+    };
+
+    const res = await request(app)
+      .get('/api/v1/birthdates/2');
+
+    expect(res.body).toEqual(expected);
+
+  });
+
+  it('deletes birthdate entry by id', async() => {
+    const expected =
+      {
+        id: expect.any(String),
+        personName: 'Clayton',
+        birthDate: '4/20/1969'
+      };
+
+    const res = await request(app)
+      .delete('/api/v1/birthdates/1');
+
+    expect(res.body).toEqual(expected);
+    
+
+  });
+
 });
 
-// ('Clayton', '1969-04-20'),
-// ('Bob', '2000-01-01');
+// ('Clayton', '04/20/1969'),
+// ('Bob', '01/01/2000');
