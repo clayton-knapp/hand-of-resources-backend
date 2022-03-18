@@ -60,7 +60,7 @@ describe('hand-of-resources-backend routes', () => {
 
   });
 
-  
+
   it('deletes subscriber by id', async() => {
     const expected = { 
       id: expect.any(String), 
@@ -71,6 +71,23 @@ describe('hand-of-resources-backend routes', () => {
       .delete('/api/v1/subscribers/2');
 
     expect(res.body).toEqual(expected);
+  });
+
+  
+
+  it('updates subscriber by id', async() => {
+    const expected = { 
+      id: expect.any(String), 
+      email: 'cat@cat.com', 
+      subscribed: true 
+    };
+
+    const res = await request(app)
+      .patch('/api/v1/subscribers/2')
+      .send({ email: 'cat@cat.com', subscribed: true });
+
+    expect(res.body).toEqual(expected);
+
   });
 
 });
