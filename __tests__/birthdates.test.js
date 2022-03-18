@@ -19,14 +19,14 @@ describe('hand-of-resources-backend routes', () => {
     const expected = {
       id: expect.any(String),
       personName: 'Alex',
-      birthdate: '1987-11-27'
+      birthDate: '1987-11-27'
     };
 
     const res = await request(app)
       .post('/api/v1/birthdates')
       .send({ 
         personName: 'Alex',
-        birthdate: '1987-11-27' 
+        birthDate: '1987-11-27' 
       });
 
     expect(res.body).toEqual(expected);

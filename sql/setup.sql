@@ -58,11 +58,11 @@ DROP TABLE IF EXISTS birthdates;
 CREATE TABLE birthdates (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   person_name TEXT NOT NULL,
-  birthdate TEXT NOT NULL
+  birth_date TEXT NOT NULL 
 );
 
 INSERT INTO
-  birthdates (person_name, birthdate)
+  birthdates (person_name, birth_date)
 VALUES
   ('Clayton', '1969-04-20'),
   ('Bob', '2000-01-01');
