@@ -49,3 +49,20 @@ INSERT INTO
 VALUES
   ('clay@clay.com', true),
   ('sterling@sterling.com', false);
+
+
+
+-- TABLE 4
+DROP TABLE IF EXISTS birthdates;
+
+CREATE TABLE birthdates (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  person_name TEXT NOT NULL,
+  birthdate TEXT NOT NULL
+);
+
+INSERT INTO
+  birthdates (person_name, birthdate)
+VALUES
+  ('Clayton', '1969-04-20'),
+  ('Bob', '2000-01-01');
