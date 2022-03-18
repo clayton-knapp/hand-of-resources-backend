@@ -60,4 +60,17 @@ describe('hand-of-resources-backend routes', () => {
 
   });
 
+  
+  it('deletes subscriber by id', async() => {
+    const expected = { 
+      id: expect.any(String), 
+      email: 'sterling@sterling.com', subscribed: false 
+    };
+
+    const res = await request(app)
+      .delete('/api/v1/subscribers/2');
+
+    expect(res.body).toEqual(expected);
+  });
+
 });
