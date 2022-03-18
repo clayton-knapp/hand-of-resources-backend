@@ -84,6 +84,22 @@ describe('hand-of-resources-backend routes', () => {
 
   });
 
+  it('updates a birthdate entry by id', async() => {
+    const expected = 
+      {
+        id: expect.any(String),
+        personName: 'Clayton',
+        birthDate: '10/31/1969'
+      };
+
+    const res = await request(app)
+      .patch('/api/v1/birthdates/1')
+      .send({ birthDate: '10/31/1969' });
+
+    expect(res.body).toEqual(expected);
+
+  });
+
 });
 
 // ('Clayton', '04/20/1969'),
