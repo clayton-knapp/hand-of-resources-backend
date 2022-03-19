@@ -74,5 +74,22 @@ describe('hand-of-resources-backend routes', () => {
     expect(res.body).toEqual(expected);
   });
 
+  it('deletes pizza by id', async() => {
+    const expected =
+      {
+        id: expect.any(String),
+        pizzaName: 'Vegan Pie', 
+        price: '$29.99', 
+        toppings: ['cashew sauce', 'coconut cheese', 'veggie-roni']
+      };
+
+    const res = await request(app)
+      .delete('/api/v1/pizzas/2');
+
+    expect(res.body).toEqual(expected);
+  });
+
+
+
 });
 
