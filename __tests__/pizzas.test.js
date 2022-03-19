@@ -35,4 +35,29 @@ describe('hand-of-resources-backend routes', () => {
 
   });
 
+  it('gets all pizzas', async() => {
+    const expected = [
+      {
+        id: expect.any(String),
+        pizzaName: 'Margarita', 
+        price: '$19.99', 
+        toppings: ['red sauce', 'cheese', 'pepperoni']
+      },
+      {
+        id: expect.any(String),
+        pizzaName: 'Vegan Pie', 
+        price: '$29.99', 
+        toppings: ['cashew sauce', 'coconut cheese', 'veggie-roni']
+      }
+    ];
+
+    const res = await request(app)
+      .get('/api/v1/pizzas');
+
+    expect(res.body).toEqual(expected);
+
+
+  });
+
 });
+
