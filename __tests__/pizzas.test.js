@@ -59,5 +59,20 @@ describe('hand-of-resources-backend routes', () => {
 
   });
 
+  it('gets pizza by id', async() => {
+    const expected =
+      {
+        id: expect.any(String),
+        pizzaName: 'Vegan Pie', 
+        price: '$29.99', 
+        toppings: ['cashew sauce', 'coconut cheese', 'veggie-roni']
+      };
+
+    const res = await request(app)
+      .get('/api/v1/pizzas/2');
+
+    expect(res.body).toEqual(expected);
+  });
+
 });
 
