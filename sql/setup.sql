@@ -66,3 +66,20 @@ INSERT INTO
 VALUES
   ('Clayton', '04/20/1969'),
   ('Bob', '01/01/2000');
+
+
+-- TABLE 5
+DROP TABLE IF EXISTS pizzas;
+
+CREATE TABLE pizzas (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  pizza_name TEXT NOT NULL,
+  price MONEY NOT NULL,
+  toppings TEXT[] NOT NULL
+);
+
+INSERT INTO
+  pizzas (pizza_name, price, toppings)
+VALUES
+  ('Margarita', '19.99', ARRAY['red sauce', 'cheese', 'pepperoni']),
+  ('Vegan Pie', '29.99', ARRAY['cashew sauce', 'coconut cheese', 'veggie-roni']);

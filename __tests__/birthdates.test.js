@@ -102,5 +102,3 @@ describe('hand-of-resources-backend routes', () => {
 
 });
 
-// ('Clayton', '04/20/1969'),
-// ('Bob', '01/01/2000');
